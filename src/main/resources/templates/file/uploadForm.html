@@ -21,7 +21,7 @@
                 </div>
 
                 <div>
-                    <form method="POST" enctype="multipart/form-data" th:action="@{/files}">
+                    <form method="POST" enctype="multipart/form-data" th:action="@{/files}" accept-charset="UTF-8">
                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
                         <table>
                             <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
