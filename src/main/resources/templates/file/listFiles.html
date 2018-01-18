@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<!--<head th:replace="fragments :: head"></head>-->
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <meta description="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/assets/css/app.css}"/>
+    <script th:src="@{/assets/ckeditor/ckeditor.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <title>b-plate</title>
+</head>
+<body>
+<main>
+    <nav th:replace="fragments :: navigation"></nav>
+    <div class="small-gap"></div>
+    <div class="container">
+        <h3 th:text="${title}">Default Title</h3>
+
+        <div th:if="${message}">
+            <h2 th:text="${message}"/>
+        </div>
+
+        <h2>List All Uploaded Files</h2>
+        <div>
+            <ul>
+                <li th:each="file : ${files}">
+                    <a th:href="${file}" th:text="${file}" />
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3 th:text="${totalFiles}"/>
+            <a href="/file">Back to UploadForm</a>
+        </div>
+    </div>
+    <div class="small-gap"></div>
+</main>
+<footer th:replace="fragments :: footer"></footer>
+<div th:replace="fragments :: scripts"></div>
+</body>
+</html>

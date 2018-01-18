@@ -11,4 +11,5 @@ CKEDITOR.editorConfig = function( config ) {
     config.fillEmptyBlocks = true;
     // allow i tags to be empty (for font awesome)
     CKEDITOR.dtd.$removeEmpty['i'] = false;
+    config.extraPlugins = 'htmlwriter';
 };

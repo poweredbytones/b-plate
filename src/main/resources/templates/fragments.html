@@ -80,12 +80,10 @@
 </nav>
 
 <main th:fragment="page-body" style="flex: 1 0 auto;">
-    <div>
         <p th:unless="${page}">
             Page not found.&nbsp;&nbsp;:(
         </p>
         <div th:utext="${page.body}"></div>
-    </div>
 </main>
 
 <footer th:fragment="footer" class="page-footer">

@@ -19,6 +19,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 /**
  *    888                      888          888
@@ -63,6 +64,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder(10);
     }
 
+
+    @Bean(name = "multipartResolver")
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(100000);
+        return multipartResolver;
+    }
+
+
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/assets/**");
@@ -86,6 +96,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/pages").hasAnyRole("ADMIN", "PUBLISHER")
                 .antMatchers("/page/edit/*").hasAnyRole("ADMIN", "PUBLISHER")
                 .antMatchers("/page/delete").hasAnyRole("ADMIN", "PUBLISHER")
+
+                .antMatchers("/file").hasAnyRole("ADMIN", "PUBLISHER")
+                .antMatchers("/fileUpload").hasAnyRole("ADMIN", "PUBLISHER")
+                .antMatchers("/file/getallfiles").hasAnyRole("ADMIN", "PUBLISHER")
+
                 .antMatchers("/users").hasRole("ADMIN")
                 .antMatchers("/user/edit/*").hasRole("ADMIN")
                 .antMatchers("/user-enable").hasRole("ADMIN")

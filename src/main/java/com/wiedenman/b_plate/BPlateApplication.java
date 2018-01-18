@@ -1,7 +1,12 @@
 package com.wiedenman.b_plate;
 
+import com.wiedenman.b_plate.config.StorageProperties;
+import com.wiedenman.b_plate.service.StorageService;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 
 /**
  *    888                      888          888
@@ -25,9 +30,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
+@EnableConfigurationProperties(StorageProperties.class)
 public class BPlateApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BPlateApplication.class, args);
+	}
+
+	@Bean
+	CommandLineRunner init(StorageService storageService) {
+		return (args) -> {
+			storageService.deleteAll();
+			storageService.init();
+		};
 	}
 }
