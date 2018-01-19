@@ -31,7 +31,7 @@ The following features are provided by b-plate "out-of-the-box" in a MVC pattern
 ## Installation
 1. Fork the repository, and clone to your workspace, install in your chosen IDE.
 
-2. Create a MySQL database on your local installation.
+2. Create a MySQL database on your local installation and import the import.sql file in the resources directory.  If that does not work use dump.sql to import through phpMyAdmin.
 
 3. Create 'application.properties' in the top-level directory of the project and enter your database credentials.  This is the code you are looking for:
 
@@ -70,6 +70,7 @@ spring.mail.password = yourpassword
 spring.mail.protocol = smtp
 #spring.mail.defaultEncoding = UTF-8
 ``` 
+
 
 
 ## License & Use
