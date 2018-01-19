@@ -15,46 +15,36 @@
             <div class="small-gap"></div>
             <div class="container">
                 <h3 th:text="${title}">Default Title</h3>
+                <div class="small-gap"></div>
 
                 <div th:if="${message}">
                     <h2 th:text="${message}"/>
                 </div>
-
-                <div>
-                    <form method="POST" enctype="multipart/form-data" th:action="@{/files}" accept-charset="UTF-8">
-                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-                        <table>
-                            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-                            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-                        </table>
-                    </form>
+                <div class="row">
+                    <div class="center" style="background-color: white; border-radius: 4px; padding: 10px;">
+                        <div class="small-gap"></div>
+                        <h4 style="color: #cacaca;">Upload a file:</h4>
+                        <div class="small-gap"></div>
+                        <form method="POST" enctype="multipart/form-data" action="/files" accept-charset="UTF-8">
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                            <input type="file" name="file" style="position: relative; right: -30px;"/><br/>
+                            <div class="small-gap"></div>
+                            <button class="btn" type="submit" value="Upload">Submit</button>
+                            <div class="small-gap"></div>
+                        </form>
+                    </div>
                 </div>
-
+                <div class="large-gap"></div>
                 <div>
-                    <ul>
-                        <li th:each="file : ${files}">
-                            <a th:href="${file}" th:text="${file}" />
-                        </li>
-                    </ul>
+                    <div th:each="file : ${files}">
+                        <div class="row" style="background-color: #dadada; padding: 15px; border-radius: 4px;">
+                            <img th:src="${file}" style="width: 100px; border: 1px solid grey; border-radius: 4px;" />
+                            <div style="height: 10px;"></div>
+                            <a th:href="${file}" th:text="${file}" style="font-size: 1.3em;"></a>
+                        </div>
+                        <div class="small-gap"></div>
+                    </div>
                 </div>
-
-                <!--<div>-->
-                    <!--<form method="POST" enctype="multipart/form-data" action="/fileUpload">-->
-                        <!--<table>-->
-                            <!--<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>-->
-                            <!--<tr><td></td><td><input type="submit" value="Upload" /></td></tr>-->
-                        <!--</table>-->
-                    <!--</form>-->
-                <!--</div>-->
-
-                <!--<a href="file/getallfiles">Get List Files</a>-->
-
-                <!--<form method="post" action="fileUpload" enctype="multipart/form-data">-->
-                    <!--<label for="files" class="btn">Upload New Profile Image</label>-->
-                    <!--<input id="files" type="file" name="file" style="float: left;visibility:hidden;" class="btn" th:value="upload"/>-->
-                    <!--<button type="submit">Save</button>-->
-                <!--</form>-->
-
             </div>
             <div class="small-gap"></div>
         </main>
