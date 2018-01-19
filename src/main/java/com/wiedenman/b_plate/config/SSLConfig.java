@@ -33,7 +33,7 @@ public class SSLConfig {
     private Connector initiateHttpConnector() {
         Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
         connector.setScheme("http");
-        connector.setPort(8443);
+        connector.setPort(80);
         connector.setSecure(false);
         connector.setRedirectPort(443);
 
