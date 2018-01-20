@@ -5,7 +5,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" th:href="@{/assets/css/app.css}"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" th:async="true"></script>
     <title>b-plate</title>
 </head>
 <body>
@@ -66,7 +66,7 @@
                     </select>
                     <label>Enabled</label>
                 </div>
-                <script>
+                <script th:async="true">
                     $(document).ready(function() {
                         $('select').material_select();
                     });

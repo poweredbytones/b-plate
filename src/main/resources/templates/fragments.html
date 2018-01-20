@@ -5,7 +5,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" th:href="@{../assets/css/app.css}"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" th:async="true"></script>
     <title>b-plate</title>
 </head>
 <body>
@@ -59,16 +59,16 @@
             <ul th:case="${true}">
                 <li class="small-gap"></li>
                 <li><a  sec:authentication="name" class="Lheader-item" th:href="@{/profile}" style="font-size: 1.3rem;"></a></li>
-                <li><a th:href="@{/todo}">tasks</a></li>
-                <li><a th:href="@{/pages}" sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_PUBLISHER')">pages</a></li>
-                <li><a th:href="@{/files}" sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_PUBLISHER')">images</a></li>
-                <li><a th:href="@{/users}" sec:authorize="hasRole('ROLE_ADMIN')">users</a></li>
-                <!-- TODO: make this visible to admin and publisher from front end only -->
+                <li><a th:href="@{/todo}">Tasks</a></li>
+                <li><a th:href="@{/pages}" sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_PUBLISHER')">Pages</a></li>
+                <li><a th:href="@{/files}" sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_PUBLISHER')">Images</a></li>
+                <li><a th:href="@{/users}" sec:authorize="hasRole('ROLE_ADMIN')">Users</a></li>
+                <!-- TODO: add edit this page feature -->
                 <!--<li><a href="#">edit this page</a></li>-->
                 <li>
                     <form class="logout inline logout-mobile" th:action="@{/logout}" method="post" accept-charset="UTF-8">
                         <button type="submit" style="background: none; border: none; font-size: 0.9rem; font-weight: 500;">
-                            <span>logout</span>
+                            Logout
                         </button>
                     </form>
                 </li>
